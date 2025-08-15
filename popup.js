@@ -1,15 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const linkListElement = document.getElementById('link-list');
     const noLinksMessage = document.getElementById('no-links');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+    const openShortcutsBtn = document.getElementById('openShortcutsBtn');
     
     document.body.addEventListener('click', (event) => {
-        const activeContainer = document.querySelector('.delete-confirm-buttons');
-        if (activeContainer && !activeContainer.contains(event.target) && !event.target.closest('.delete-btn')) {
-            const listItem = activeContainer.closest('.link-item');
+        const activeDeleteContainer = document.querySelector('.delete-confirm-buttons');
+        const activeClearAllContainer = document.querySelector('.clear-all-confirm-buttons');
+
+        if (activeDeleteContainer && !activeDeleteContainer.contains(event.target) && !event.target.closest('.delete-btn')) {
+            const listItem = activeDeleteContainer.closest('.link-item');
             if (listItem) {
-                activeContainer.remove();
+                activeDeleteContainer.remove();
                 listItem.querySelector('.delete-btn').style.display = 'flex';
             }
+        }
+        
+        if (activeClearAllContainer && !activeClearAllContainer.contains(event.target) && !event.target.closest('.clear-all-btn')) {
+            activeClearAllContainer.remove();
+            clearAllBtn.style.display = 'block';
+            openShortcutsBtn.style.display = 'block';
         }
     });
 
@@ -17,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         linkListElement.innerHTML = '';
         if (linkList.length > 0) {
             noLinksMessage.style.display = 'none';
+            clearAllBtn.style.display = 'block';
             linkList.forEach((linkData, index) => {
                 const listItem = document.createElement('li');
                 listItem.classList.add('link-item');
@@ -84,8 +95,57 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             noLinksMessage.style.display = 'block';
+            clearAllBtn.style.display = 'none';
         }
     }
+    
+    clearAllBtn.addEventListener('click', (event) => {
+        const headerButtons = document.querySelector('.header-buttons');
+        const existingConfirmButtons = headerButtons.querySelector('.clear-all-confirm-buttons');
+        
+        if (existingConfirmButtons) {
+            existingConfirmButtons.remove();
+            clearAllBtn.style.display = 'block';
+            openShortcutsBtn.style.display = 'block';
+            return;
+        }
+
+        clearAllBtn.style.display = 'none';
+        openShortcutsBtn.style.display = 'none';
+
+        const confirmButtonsContainer = document.createElement('div');
+        confirmButtonsContainer.classList.add('clear-all-confirm-buttons');
+        
+        const confirmYes = document.createElement('button');
+        confirmYes.classList.add('confirm-yes');
+        confirmYes.innerHTML = '<span class="material-icons">check</span>';
+        confirmYes.addEventListener('click', () => {
+            chrome.storage.local.set({ 'linkList': [] }, () => {
+                renderLinkList([]);
+                clearAllBtn.style.display = 'block';
+                openShortcutsBtn.style.display = 'block';
+                confirmButtonsContainer.remove();
+            });
+        });
+
+        const confirmNo = document.createElement('button');
+        confirmNo.classList.add('confirm-no');
+        confirmNo.innerHTML = '<span class="material-icons">close</span>';
+        confirmNo.addEventListener('click', () => {
+            clearAllBtn.style.display = 'block';
+            openShortcutsBtn.style.display = 'block';
+            confirmButtonsContainer.remove();
+        });
+        
+        confirmButtonsContainer.appendChild(confirmYes);
+        confirmButtonsContainer.appendChild(confirmNo);
+        headerButtons.appendChild(confirmButtonsContainer);
+        event.stopPropagation();
+    });
+
+    openShortcutsBtn.addEventListener('click', () => {
+        chrome.tabs.create({ url: 'chrome://extensions/shortcuts' });
+    });
 
     chrome.storage.local.get(['linkList'], function(result) {
         renderLinkList(result.linkList || []);
