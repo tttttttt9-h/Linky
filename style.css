@@ -1,0 +1,180 @@
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    width: 350px;
+    min-height: 200px;
+    margin: 0;
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+    color: #333;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+    text-shadow: none;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+    opacity: 1;
+    margin-bottom: 15px;
+}
+
+#link-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s;
+    position: relative;
+}
+
+.link-item:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.link-item a {
+    flex-grow: 1;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 15px;
+}
+
+.link-item a:hover {
+    text-decoration: underline;
+}
+
+.copy-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.copy-btn:hover {
+    transform: scale(1.1);
+}
+
+.material-icons {
+    font-size: 20px;
+    color: #007bff;
+}
+
+.check-icon {
+    color: #28a745;
+}
+
+#no-links {
+    font-style: italic;
+    color: #999;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.delete-btn:hover {
+    transform: scale(1.1);
+}
+
+.delete-btn .material-icons {
+    font-size: 20px;
+    color: #e74c3c;
+}
+
+.delete-confirm-buttons {
+    display: flex;
+    gap: 5px;
+    margin-left: 5px;
+    animation: fade-in 0.2s ease-out forwards;
+}
+
+.delete-confirm-buttons .confirm-yes {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.delete-confirm-buttons .confirm-yes:hover {
+    transform: scale(1.1);
+}
+
+.delete-confirm-buttons .confirm-yes .material-icons {
+    color: #27ae60;
+    font-size: 20px;
+}
+
+.delete-confirm-buttons .confirm-no {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.delete-confirm-buttons .confirm-no:hover {
+    transform: scale(1.1);
+}
+
+.delete-confirm-buttons .confirm-no .material-icons {
+    color: #c0392b;
+    font-size: 20px;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fade-out {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.8); }
+}

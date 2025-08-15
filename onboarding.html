@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Linky 시작하기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            color: #333;
+            padding: 40px;
+            text-align: center;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 80%;
+            max-width: 600px;
+            animation: fade-in 0.5s ease-out forwards;
+        }
+        h1 {
+            color: #4A4A4A;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .intro-text {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        .feature-box {
+            background: #f8f8f8;
+            border-left: 5px solid #a18cd1;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            background: #eef;
+        }
+        .feature-box h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 20px;
+        }
+        .feature-box p {
+            margin: 5px 0 0;
+            color: #777;
+        }
+        .shortcut {
+            font-size: 18px;
+            font-weight: 700;
+            color: #a18cd1;
+            background: #f1e4ff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        @keyframes fade-in {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Linky에 오신 것을 환영합니다!</h1>
+        <p class="intro-text">Linky는 링크를 빠르게 저장하고 관리하는 가장 쉬운 방법입니다. 🔗</p>
+        <div class="feature-box">
+            <h2>✨ 링크 빠르게 저장하기</h2>
+            <p>언제든지 키보드의 <span class="shortcut">Alt + C</span>를 눌러 현재 페이지의 링크를 저장할 수 있습니다.</p>
+        </div>
+        <div class="feature-box">
+            <h2>📚 링크 목록 관리</h2>
+            <p>툴바의 Linky 아이콘을 클릭하여 저장된 모든 링크를 한눈에 확인하고 관리하세요.</p>
+        </div>
+        <p>이제 Linky와 함께 간편한 웹 서핑을 시작하세요!</p>
+    </div>
+</body>
+</html>

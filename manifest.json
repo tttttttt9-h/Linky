@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Linky",
+  "version": "1.9",
+  "description": "Alt + C로 링크를 복사하고, 팝업에서 최대 10개의 링크 목록을 관리합니다.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "commands": {
+    "copy-link": {
+      "suggested_key": {
+        "default": "Alt+C"
+      },
+      "description": "현재 페이지의 링크를 클립보드에 복사하고 목록에 추가합니다."
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "minimum_chrome_version": "88",
+  "web_accessible_resources": [
+    {
+      "resources": ["onboarding.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
