@@ -1,6 +1,6 @@
-# Linky: A Quick Link Clipper
+# Linky: A Quick Link Clipper 🔗
 
-!
+
 
 ## 소개
 Linky는 현재 보고 있는 웹페이지의 링크를 빠르게 저장하고 관리할 수 있도록 도와주는 Chrome 확장 프로그램입니다. **Alt + C** 단축키 하나로 링크를 클립보드에 복사함과 동시에 목록에 추가할 수 있어, 중요한 링크들을 놓치지 않고 편리하게 관리할 수 있습니다.
